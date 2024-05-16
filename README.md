@@ -4,9 +4,9 @@ This SDK provides developers with tools to easily integrate Utila's API services
 
 ## Features
 
-- Easy authentication with service accounts.
-- Promise-based API methods for asynchronous operations.
-- Supports both JavaScript and TypeScript.
+- Easy authentication with service accounts
+- Promise-based API methods for asynchronous operations
+- Supports both JavaScript and TypeScript
 
 ## Installation
 
@@ -30,8 +30,8 @@ npm install @utila/api
 
 Set up the SDK using the credentials from your service account:
 
-1. Store your service account's private key file securely within your project.
-2. Reference the key file correctly in your environment settings or directly in the application code.
+1. Store your service account's private key file securely within your project
+2. Reference the key file correctly in your environment settings or directly in the application code
 
 ### Usage Example
 
@@ -40,7 +40,7 @@ import { createApiClient, serviceAccountAuthStrategy } from '@utila/api';
 import { readFile } from 'fs/promises';
 
 // Configure the API client
-// This function initializes the client with a strategy to authenticate using a service account.
+// This function initializes the client with a strategy to authenticate using a service account
 const client = createApiClient({
   authStrategy: serviceAccountAuthStrategy({
     email: 'your-service-account-email@utila.io',
@@ -53,7 +53,7 @@ const client = createApiClient({
 async function getBalances() {
   try {
     // Query balance information
-    // This method fetches balance details from a specified 'parent' vault.
+    // This method fetches balance details from a specified 'parent' vault
     const { balances } = await client.balances.queryBalances({
       parent: 'vaults/vault_id',
     });
@@ -72,6 +72,36 @@ getBalances();
 The SDK uses the credentials of a service account to authenticate API requests. This involves specifying the email associated with the service account and a function to read the private key file asynchronously.
 
 For more detailed documentation on other capabilities such as managing transactions, wallets, etc., refer to the API [documentation](https://api-preview.docs.utila.io/v1alpha1/index.html).
+
+## Available Methods
+
+### Transactions
+- listTransactions
+- getTransaction
+- batchGetTransactions
+- initiateTransaction
+- estimateTransactionFee
+
+### Assets
+- getAsset
+- batchGetAssets
+
+### Balances
+- queryBalances
+
+### Blockchains
+- getNetwork
+- listNetworks
+- getLatestBatchContract
+
+### Vaults
+- getVault
+- listVaults
+
+### Wallets
+- generateWallet
+- listWallets
+- createWalletAddress
 
 ## Support
 
